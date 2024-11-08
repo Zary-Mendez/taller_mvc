@@ -4,7 +4,7 @@ namespace App\models\db;
 
 use mysqli;
 
-class EjemploDb
+class Ingresos_salas_db
 {
     private $host = 'localhost';
     private $user = 'root';
@@ -36,3 +36,18 @@ class EjemploDb
         return $this->conex->query($sql);
     }
 }
+
+class Conectar
+{
+
+
+    public static function conexion()
+    {
+        $conexion = new mysqli("localhost", "root", "", "ingresos_salas_db");
+        return $conexion;
+    }
+}
+
+
+define("CONTROLADOR_PRINCIPAL", "Registros");
+define("ACCION_PRINCIPAL", "index");
