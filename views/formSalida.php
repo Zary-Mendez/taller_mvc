@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,15 +8,23 @@
 </head>
 
 <body>
-    <form name="formularioSalida" id="formularioSalida" action="index.php?c=registros&a=ControllerValidarCodigoSalida" method="POST">
+    <form name="formSalida" id="formSalida" action="index.php?c=registros&a=ControllerValidarCodigoSalida" method="POST">
         <label>Ingrese codigo del estudiante registrado</label>
         <input type="number" name="codigoSalida" id="codigoSalida" placeholder="Ingrese codigo del estudiante">
 
-        <label>Ingrese la hora de salida</label>
-        <input type="time" name="horaSalida" id="horaSalida" placeholder="Ingrese la hora de salida">
+        <br>
+        <br>
+
+        <label>Ingrese hora de salida</label>
+        <input type="time" name="horaSalida" id="horaSalida" placeholder="Ingrese hora de salida">
+
+        <br>
+        <br>
 
         <button type="submit">Registrar Salida</button>
     </form>
 </body>
+
+<link rel="stylesheet" href="public/estilos.css">
 
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresos y salidas</title>
+    <title>Informacion de ingresos y salidas</title>
 </head>
 
 <body>
@@ -35,13 +35,15 @@
                 echo '<td>' . $dato['horaSalida'] . '</td>';
                 echo '<td>' . $dato['idResponsable'] . '</td>';
                 echo '<td>' . $dato['idSala'] . '</td>';
+                echo '<td><a href="index.php?c=registros&a=ControllerModificarRegistro&codigo=' . $dato['codigoEstudiante'] . '&nombre=' . $dato['nombreEstudiante'] . '">Modificar</a></td>';
                 echo '</tr>';
             }
-
             ?>
         </tbody>
     </table>
     <button><a href="index.php?c=registros&a=index">Volver</a></button>
 </body>
+
+<link rel="stylesheet" href="public/estilos.css">
 
 </html>

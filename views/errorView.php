@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,9 +9,9 @@
 
 <body>
     <div class="error-message">
-        <p><?php echo $errorMessage ?></p>
+        <p><?php echo $errorMsg ?></p>
     </div>
-    <div><a href="index.php?c=registros&a=ControllerIngreso"><button>Volver</button></a></div>
+    <div><a href="index.php?c=registros&a=index"><button class="btnError">Volver</button></a></div>
 </body>
-
+<link rel="stylesheet" href="public/estilos.css">
 </html>

@@ -8,7 +8,7 @@ class Ingresos
 
     public function __construct()
     {
-        $this->db = Conectar::conexion();
+        $this->db = ConexionBase::bd();
         $this->registros = array();
     }
 
@@ -51,7 +51,16 @@ class Ingresos
         return $this->registros;
     }
 
-    public function CambioSalida($codigoSalida , )
+    public function getRegistrosSalas()
+    {
+        $resultado = $this->db->query("SELECT * FROM horarios_salas");
+        while ($row = $resultado->fetch_assoc()) {
+            $this->registros[] = $row;
+        }
+        return $this->registros;
+    }
+
+    public function CambioSalida($codigoSalida)
     {
         $resultado = $this->db->query("UPDATE ingresos SET horaSalida = NOW() WHERE codigoEstudiante = '$codigoSalida'");
     }
@@ -59,5 +68,15 @@ class Ingresos
     public function insertarRegistro($codigo, $nombre, $idPrograma, $fecha, $hora, $idSala, $idResponsable)
     {
         $resultado = $this->db->query("INSERT INTO ingresos(codigoEstudiante, nombreEstudiante, idPrograma, fechaIngreso, horaIngreso, horaSalida, idResponsable, idSala)values('$codigo', '$nombre', '$idPrograma', '$fecha', '$hora', '00:00' , '$idResponsable', '$idSala') ");
+    }
+
+    public function insertarRegistroSala($fecha, $materia, $horaInicio, $horaSalida, $programa, $sala)
+    {
+        $resultado = $this->db->query("INSERT INTO horarios_salas(dia, materia, horaInicio, horaFin, idPrograma, idSala)values('$fecha', '$materia','$horaInicio', '$horaSalida', '$programa', '$sala') ");
+    }
+
+    public function modificarUsuario($codigoNuevo, $nombreNuevo, $codigoViejo)
+    {
+        $resultado = $this->db->query("UPDATE ingresos SET codigoEstudiante = '$codigoNuevo', nombreEstudiante = '$nombreNuevo' WHERE codigoEstudiante = '$codigoViejo'");
     }
 }
