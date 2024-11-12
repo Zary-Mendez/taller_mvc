@@ -1,9 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 class RegistrosController
 {
 
@@ -53,7 +49,7 @@ class RegistrosController
                     $this->index();
                     return;
                 } else {
-                    $errorMsg = "Ya se registró una salida con ese usuario a las ";
+                    $errorMsg = "ERROR: Ya se registró la salida de este usuario ";
                     require_once "views/errorView.php";
                     return;
                 }
@@ -61,12 +57,10 @@ class RegistrosController
         }
 
         if (!$codigoEncontrado) {
-            $errorMsg = "El código ingresado no existe en los registros.";
+            $errorMsg = "ERROR: El código ingresado no existe en los registros ";
             require_once "views/errorView.php";
         }
     }
-
-    //Pagina principal
 
     public function index()
     {
@@ -115,12 +109,10 @@ class RegistrosController
                 require_once "views/errorView.php";
             }
         } else {
-            $errorMsg = "ERROR: El programa ingresado no es valido";
+            $errorMsg = "ERROR: El programa ingresado no es valido ";
             require_once "views/errorView.php";
         }
     }
-
-    //Obtener todas las salas de la base de datos
 
     public function ControllerGetSalas()
     {
@@ -130,8 +122,6 @@ class RegistrosController
         require_once "views/viewSalas.php";
     }
 
-    //Obtener todos los programas de la base de datos
-
     public function ControllerGetProgramas()
     {
         $registro = new Ingresos();
@@ -139,7 +129,6 @@ class RegistrosController
 
         require_once "views/viewProgramas.php";
     }
-    //Obtener todos los responsables de la base de datos
 
     public function ControllerGetResponsables()
     {
@@ -149,8 +138,6 @@ class RegistrosController
         require_once "views/viewResponsables.php";
     }
 
-    //Obtener todos los registros de la base de datos
-
     public function ControllerGetRegistros()
     {
         $registro = new Ingresos();
@@ -159,14 +146,10 @@ class RegistrosController
         require_once "views/registroActual.php";
     }
 
-    //Acceso al formulario de ingreso
-
     public function ControllerIngreso()
     {
         require_once "views/formIngreso.php";
     }
-
-    //Guardar nuevo ingreso
 
     public function ControllerGuardar()
     {
@@ -191,32 +174,30 @@ class RegistrosController
                                 $controlador->insertarRegistro($codigo, $nombre, $idPrograma, $fecha, $hora, $idSala, $idResponsable);
                                 $this->index();
                             } else {
-                                $errorMsg = "ERROR: La sala ya esta apartada para una clase en ese horario";
+                                $errorMsg = "ERROR: La sala ya esta apartada para una clase en ese horario ";
                                 require_once "views/errorView.php";
                             }
                         } else {
-                            $errorMsg = "ERROR: El responsable ingresado no existe";
+                            $errorMsg = "ERROR: El responsable ingresado no existe ";
                             require_once "views/errorView.php";
                         }
                     } else {
-                        $errorMsg = "ERROR: La sala ingresada no existe";
+                        $errorMsg = "ERROR: La sala ingresada no existe ";
                         require_once "views/errorView.php";
                     }
                 } else {
-                    $errorMsg = "ERROR: Solo hay fechas de Lunes a viernes de 7am a 8:50pm y Sabados de 7:00am a 4:30pm";
+                    $errorMsg = "ERROR: Solo hay fechas de Lunes a viernes de 7am a 8:50pm y Sabados de 7:00am a 4:30pm ";
                     require_once "views/errorView.php";
                 }
             } else {
-                $errorMsg = "ERROR: El programa ingresado no existe";
+                $errorMsg = "ERROR: El programa ingresado no existe ";
                 require_once "views/errorView.php";
             }
         } else {
-            $errorMsg = "El codigo en los registros ya existe";
+            $errorMsg = "ERROR: El codigo en los registros ya existe ";
             require_once "views/errorView.php";
         }
     }
-
-    /*Validaciones de existencia de variables*/
 
     public function ControllerValidarSalas($sala)
     {
@@ -331,7 +312,7 @@ class RegistrosController
                 $dato['idSala'] == $sala &&
                 ($horaInicioNueva >= $horaInicioExistente && $horaInicioNueva < $horaFinExistente)
             ) {
-                $errorMsg = "La sala ya está apartada para esa fecha en ese horario";
+                $errorMsg = "ERROR: La sala ya está apartada para esa fecha en ese horario ";
                 require_once "views/errorView.php";
                 return false;
             }
@@ -360,7 +341,7 @@ class RegistrosController
                 }
             }
         } else {
-            $errorMsg = "ERROR: Solo hay fechas de Lunes a viernes de 7am a 8:50pm y Sabados de 7:00am a 4:30pm";
+            $errorMsg = "ERROR: Solo hay fechas de Lunes a viernes de 7am a 8:50pm y Sabados de 7:00am a 4:30pm ";
             require_once "views/errorView.php";
             return false;
         }
@@ -375,7 +356,7 @@ class RegistrosController
 
         $horaIngresada = new DateTime($hora);
 
-        if ($diaSemana <= 5) { // de lunes a viernes
+        if ($diaSemana <= 5) { 
             $horaInicio = new DateTime('7:00');
             $horaFin = new DateTime('20:50');
 
@@ -383,7 +364,7 @@ class RegistrosController
                 return false;
             }
             return true;
-        } elseif ($diaSemana == 6) { // sábado
+        } elseif ($diaSemana == 6) { 
             $horaInicio = new DateTime('7:00');
             $horaFin = new DateTime('16:30');
 

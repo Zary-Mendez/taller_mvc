@@ -10,7 +10,6 @@
 
 <body>
     <div class="cuadro">
-        <!-- Contenedor de botones alineados a la izquierda -->
         <div class="btn-container">
             <button class="btnPrincipal"><a href="index.php?c=registros&a=ControllerIngreso">Registrar ingreso (Estudiante)</a></button>
             <button class="btnPrincipal"><a href="index.php?c=registros&a=ControllerSalidas">Registrar salida (Estudiante)</a></button>
@@ -18,7 +17,6 @@
             <button class="btnPrincipal"><a href="index.php?c=registros&a=ControllerGetRegistros">Ver registros y salidas</a></button>
         </div>
 
-        <!-- Contenedor de tablas alineado a la derecha -->
         <div class="tabla-container">
             <table border="1">
                 <thead>
